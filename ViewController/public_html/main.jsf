@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="index.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1" usesUpload="true">
+            <af:panelSplitter id="ps1" splitterPosition="600">
+                <f:facet name="first">
+                    <af:panelCollection id="pc1">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar"/>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.FilesView1.collectionModel}" var="row"
+                                  rows="#{bindings.FilesView1.rangeSize}"
+                                  emptyText="#{bindings.FilesView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.FilesView1.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.FilesView1.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.FilesView1.rangeSize}" id="t1"
+                                  partialTriggers="::if1">
+                            <af:column headerText="#{bindings.FilesView1.hints.Id.label}" id="c1">
+                                <af:outputText value="#{row.Id}" shortDesc="#{bindings.FilesView1.hints.Id.tooltip}"
+                                               id="ot1"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.FilesView1.hints.OperDate.label}" id="c2">
+                                <af:outputText value="#{row.OperDate}"
+                                               shortDesc="#{bindings.FilesView1.hints.OperDate.tooltip}" id="ot2">
+                                    <af:convertDateTime pattern="#{bindings.FilesView1.hints.OperDate.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.FilesView1.hints.Data.label}" id="c3">
+                                <af:outputText value="#{row.Data}" shortDesc="#{bindings.FilesView1.hints.Data.tooltip}"
+                                               id="ot3"/>
+                            </af:column>
+                        </af:table>
+                        <f:facet name="secondaryToolbar">
+                            <af:toolbar id="t2">
+                                <af:inputFile label="Вибрати файл" id="if1"
+                                              autoSubmit="true" valueChangeListener="#{fileBean.upload}"/>
+                            </af:toolbar>
+                        </f:facet>
+                    </af:panelCollection>
+                </f:facet>
+                <f:facet name="second">
+                    <af:image id="i1" source="/fileservlet?id=#{bindings.Id.inputValue}"
+                              partialTriggers="pc1:t1"
+                              inlineStyle="border-style:solid; height:300px; width:300px;"/>
+                </f:facet>
+            </af:panelSplitter>
+        </af:form>
+    </af:document>
+</f:view>

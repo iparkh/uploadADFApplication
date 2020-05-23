@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Files"
+  Version="12.1.3.10.47"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="FILES"
+  AliasName="Files"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="Id"
+    IsNotNull="true"
+    Precision="32"
+    ColumnName="ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FILES"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="OperDate"
+    IsNotNull="true"
+    ColumnName="OPER_DATE"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    TableName="FILES"/>
+  <Attribute
+    Name="Data"
+    IsQueriable="false"
+    ColumnName="DATA"
+    SQLType="BLOB"
+    Type="oracle.jbo.domain.BlobDomain"
+    ColumnType="BLOB"
+    TableName="FILES"/>
+  <Attribute
+    Name="Nam"
+    Precision="255"
+    ColumnName="NAM"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FILES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="255"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Descr"
+    Precision="512"
+    ColumnName="DESCR"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FILES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="512"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="PkFiles"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PK_FILES"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.entity.Files.Id"/>
+    </AttrArray>
+  </Key>
+</Entity>
