@@ -6,40 +6,111 @@
         <af:form id="f1" usesUpload="true">
             <af:panelSplitter id="ps1" splitterPosition="600">
                 <f:facet name="first">
-                    <af:panelCollection id="pc1">
-                        <f:facet name="menus"/>
-                        <f:facet name="toolbar"/>
-                        <f:facet name="statusbar"/>
-                        <af:table value="#{bindings.FilesView1.collectionModel}" var="row"
-                                  rows="#{bindings.FilesView1.rangeSize}"
-                                  emptyText="#{bindings.FilesView1.viewable ? 'No data to display.' : 'Access Denied.'}"
-                                  rowBandingInterval="0"
-                                  selectedRowKeys="#{bindings.FilesView1.collectionModel.selectedRow}"
-                                  selectionListener="#{bindings.FilesView1.collectionModel.makeCurrent}"
-                                  rowSelection="single" fetchSize="#{bindings.FilesView1.rangeSize}" id="t1"
-                                  partialTriggers="::if1">
-                            <af:column headerText="#{bindings.FilesView1.hints.Id.label}" id="c1">
-                                <af:outputText value="#{row.Id}" shortDesc="#{bindings.FilesView1.hints.Id.tooltip}"
-                                               id="ot1"/>
-                            </af:column>
-                            <af:column headerText="#{bindings.FilesView1.hints.OperDate.label}" id="c2">
-                                <af:outputText value="#{row.OperDate}"
-                                               shortDesc="#{bindings.FilesView1.hints.OperDate.tooltip}" id="ot2">
-                                    <af:convertDateTime pattern="#{bindings.FilesView1.hints.OperDate.format}"/>
-                                </af:outputText>
-                            </af:column>
-                            <af:column headerText="#{bindings.FilesView1.hints.Data.label}" id="c3">
-                                <af:outputText value="#{row.Data}" shortDesc="#{bindings.FilesView1.hints.Data.tooltip}"
-                                               id="ot3"/>
-                            </af:column>
-                        </af:table>
-                        <f:facet name="secondaryToolbar">
-                            <af:toolbar id="t2">
-                                <af:inputFile label="Вибрати файл" id="if1"
-                                              autoSubmit="true" valueChangeListener="#{fileBean.upload}"/>
-                            </af:toolbar>
+                    <af:panelSplitter id="ps2" orientation="vertical">
+                        <f:facet name="first">
+                            <af:panelCollection id="pc1">
+                                <f:facet name="menus"/>
+                                <f:facet name="toolbar"/>
+                                <f:facet name="statusbar"/>
+                                <af:table value="#{bindings.FilesView1.collectionModel}" var="row"
+                                          rows="#{bindings.FilesView1.rangeSize}"
+                                          emptyText="#{bindings.FilesView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          rowBandingInterval="0"
+                                          selectedRowKeys="#{bindings.FilesView1.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.FilesView1.collectionModel.makeCurrent}"
+                                          rowSelection="single" fetchSize="#{bindings.FilesView1.rangeSize}" id="t1"
+                                          partialTriggers="::if1">
+                                    <af:column headerText="#{bindings.FilesView1.hints.Id.label}" id="c1">
+                                        <af:outputText value="#{row.Id}"
+                                                       shortDesc="#{bindings.FilesView1.hints.Id.tooltip}" id="ot1"/>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.FilesView1.hints.OperDate.label}" id="c2">
+                                        <af:outputText value="#{row.OperDate}"
+                                                       shortDesc="#{bindings.FilesView1.hints.OperDate.tooltip}"
+                                                       id="ot2">
+                                            <af:convertDateTime pattern="#{bindings.FilesView1.hints.OperDate.format}"/>
+                                        </af:outputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.FilesView1.hints.Data.label}" id="c3">
+                                        <af:outputText value="#{row.Data}"
+                                                       shortDesc="#{bindings.FilesView1.hints.Data.tooltip}" id="ot3"/>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.FilesView1.hints.Nam.label}" id="c4">
+                                        <af:outputText value="#{row.Nam}"
+                                                       shortDesc="#{bindings.FilesView1.hints.Nam.tooltip}" id="ot4"/>
+                                    </af:column>
+                                </af:table>
+                                <f:facet name="secondaryToolbar">
+                                    <af:toolbar id="t2">
+                                        <af:inputFile label="Вибрати файл" id="if1" autoSubmit="true"
+                                                      valueChangeListener="#{fileBean.upload}"/>
+                                    </af:toolbar>
+                                </f:facet>
+                            </af:panelCollection>
                         </f:facet>
-                    </af:panelCollection>
+                        <f:facet name="second">
+                            <af:panelCollection id="pc2">
+                                <f:facet name="menus"/>
+                                <f:facet name="toolbar"/>
+                                <f:facet name="statusbar"/>
+                                <af:table value="#{bindings.FilesView11.collectionModel}" var="row"
+                                          rows="#{bindings.FilesView11.rangeSize}"
+                                          emptyText="#{bindings.FilesView11.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          rowBandingInterval="0"
+                                          selectedRowKeys="#{bindings.FilesView11.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.FilesView11.collectionModel.makeCurrent}"
+                                          rowSelection="single" fetchSize="#{bindings.FilesView11.rangeSize}" id="t3">
+                                    <af:column headerText="#{bindings.FilesView11.hints.Id.label}" id="c5">
+                                        <af:inputText value="#{row.bindings.Id.inputValue}"
+                                                      label="#{bindings.FilesView11.hints.Id.label}"
+                                                      required="#{bindings.FilesView11.hints.Id.mandatory}"
+                                                      columns="#{bindings.FilesView11.hints.Id.displayWidth}"
+                                                      maximumLength="#{bindings.FilesView11.hints.Id.precision}"
+                                                      shortDesc="#{bindings.FilesView11.hints.Id.tooltip}" id="it1">
+                                            <f:validator binding="#{row.bindings.Id.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.FilesView11.hints.OperDate.label}" id="c6">
+                                        <af:inputDate value="#{row.bindings.OperDate.inputValue}"
+                                                      label="#{bindings.FilesView11.hints.OperDate.label}"
+                                                      required="#{bindings.FilesView11.hints.OperDate.mandatory}"
+                                                      columns="#{bindings.FilesView11.hints.OperDate.displayWidth}"
+                                                      shortDesc="#{bindings.FilesView11.hints.OperDate.tooltip}"
+                                                      id="id1">
+                                            <f:validator binding="#{row.bindings.OperDate.validator}"/>
+                                            <af:convertDateTime pattern="#{bindings.FilesView11.hints.OperDate.format}"/>
+                                        </af:inputDate>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.FilesView11.hints.Nam.label}" id="c8">
+                                        <af:inputText value="#{row.bindings.Nam.inputValue}"
+                                                      label="#{bindings.FilesView11.hints.Nam.label}"
+                                                      required="#{bindings.FilesView11.hints.Nam.mandatory}"
+                                                      columns="#{bindings.FilesView11.hints.Nam.displayWidth}"
+                                                      maximumLength="#{bindings.FilesView11.hints.Nam.precision}"
+                                                      shortDesc="#{bindings.FilesView11.hints.Nam.tooltip}" id="it3">
+                                            <f:validator binding="#{row.bindings.Nam.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.FilesView11.hints.Descr.label}" id="c9">
+                                        <af:inputText value="#{row.bindings.Descr.inputValue}"
+                                                      label="#{bindings.FilesView11.hints.Descr.label}"
+                                                      required="#{bindings.FilesView11.hints.Descr.mandatory}"
+                                                      columns="#{bindings.FilesView11.hints.Descr.displayWidth}"
+                                                      maximumLength="#{bindings.FilesView11.hints.Descr.precision}"
+                                                      shortDesc="#{bindings.FilesView11.hints.Descr.tooltip}" id="it4">
+                                            <f:validator binding="#{row.bindings.Descr.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                </af:table>
+                                <f:facet name="secondaryToolbar">
+                                    <af:toolbar id="t4">
+                                        <af:inputFile label="Виберіть текстовий файл" id="if2"
+                                                      valueChangeListener="#{fileBean.uploadTxt}" autoSubmit="true"/>
+                                    </af:toolbar>
+                                </f:facet>
+                            </af:panelCollection>
+                        </f:facet>
+                    </af:panelSplitter>
                 </f:facet>
                 <f:facet name="second">
                     <af:image id="i1" source="/fileservlet?id=#{bindings.Id.inputValue}"

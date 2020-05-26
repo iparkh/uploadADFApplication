@@ -64,7 +64,7 @@ public class FileBean {
             UploadedFile      file     = (UploadedFile) valueChangeEvent.getNewValue();
             String            fileName = file.getFilename();
             BindingContainer  bindings = BindingContext.getCurrent().getCurrentBindingsEntry();
-            DCIteratorBinding iter     = (DCIteratorBinding) bindings.get("NAME_VIEW_ITERATOR");
+            DCIteratorBinding iter     = (DCIteratorBinding) bindings.get(NAME_VIEW_ITERATOR);
                               iter.getCurrentRow().setAttribute("Nam", fileName);
                               iter.getCurrentRow().setAttribute("Data", newBlobDomainForInputStream(file.getInputStream()));
             OperationBinding  op       = bindings.getOperationBinding("Commit");
@@ -81,6 +81,27 @@ public class FileBean {
           }
     }
 
+    public void uploadTxt(ValueChangeEvent valueChangeEvent) {
+        // Add event code here...
+       try {
+           UploadedFile      file     = (UploadedFile) valueChangeEvent.getNewValue();
+           String            fileName = file.getFilename();
+           BindingContainer  bindings = BindingContext.getCurrent().getCurrentBindingsEntry();
+           DCIteratorBinding iter     = (DCIteratorBinding) bindings.get(NAME_VIEW_ITERATOR);
+                             iter.getCurrentRow().setAttribute("Nam", fileName);
+                             iter.getCurrentRow().setAttribute("Data", newBlobDomainForInputStream(file.getInputStream()));
+           OperationBinding  op       = bindings.getOperationBinding("Commit");
+                             op.execute();
+
+           FacesContext      context  = FacesContext.getCurrentInstance();
+                             context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Файл завантажено успішно..", null));
+           getInputFileComponent().resetValue();
+       } catch (Exception e) {
+            // TODO: Add catch code
+            e.printStackTrace();
+       }
+    }
+    
     private String uploadFileToLocation(UploadedFile file)    {
       String               fileName = System.currentTimeMillis() + "_" + file.getFilename();
       String                   path = PATH_DOWNLOAD + fileName;

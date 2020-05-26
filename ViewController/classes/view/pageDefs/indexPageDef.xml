@@ -22,5 +22,16 @@
         <Item Value="Id"/>
       </AttrNames>
     </attributeValues>
+    <tree IterBinding="FilesView1Iterator" id="FilesView11">
+      <nodeDefinition DefName="model.view.FilesView" Name="FilesView110">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="OperDate"/>
+          <Item Value="Data"/>
+          <Item Value="Nam"/>
+          <Item Value="Descr"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
   </bindings>
 </pageDefinition>
